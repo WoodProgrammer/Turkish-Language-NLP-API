@@ -5,14 +5,14 @@ TLNP is a Turkish Language formatting API for creating perfect documents.At now 
 For using our API your dev-env:
 1.Installing for FLASK
 
-$ pip install Flask
+`$ pip install Flask`
 
 2.Installing for flask-restful
 
-$ pip install flask-restful
+`$ pip install flask-restful`
 
 3.Installing for NLTK
-$ sudo pip install -U nltk
+` $ sudo pip install -U nltk `
 
 [nltk.org](http://www.nltk.org/) is a greatful document for NLTkit.
 
