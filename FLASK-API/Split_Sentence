@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import sys
+import ngram
+
+def Split_Sentence(sentence):
+    verb=sentence.split()
+    array=[]
+    for i in range(0,len(verb)):
+        if i+1<len(verb):
+            verbs = verb[i]+" "+verb[i+1]
+            array.insert(i,verbs)
+
+    return array
+
+
+
+def Comparison(_splitSentence,_splitText):
+
+    for i in range(0,len(_splitText)):
+        if ngram.NGram.compare(_splitSentence[0],_splitText[i],N=1)>0.7:
+            _splitSentence[0]=_splitText[i]
+
+
+b=Split_Sentence("İker Casillas")
+a=Split_Sentence("""Porto'nun tecrübeli kalecisi Iker Casillas'ın Sporting maçının son dakikasında yaptığı inanılmaz kurtarış
+geceye damgasını vurdu.Porto'nun Sporting Lizbon'ı 2-1 yendiği Portekiz Ligi mücadelesinde Iker Casillas'ın yaptığı kurtarış geceye damga vurdu.
+
+HAYATININ KURTARIŞINI YAPTI
+
+Son dakikasına 2-1 girilen karşılaşmada Sporting Lizbon'un tüm haklarıyla yüklendiği bir pozisyonda yapılan kafa vuruşunu müthiş bir refleksle çıkartan Casillas,
+ taraftarının adeta gol sevinci yaşamasına sebep oldu. Sporting Lizbon
+""")
+
+Comparison(b,a)
+print (b)
+mesaj=raw_input("Mesaj >>")
+mesaj=Split_Sentence(mesaj)
+Comparison(mesaj,a)
+print (mesaj)
