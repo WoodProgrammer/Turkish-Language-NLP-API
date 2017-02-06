@@ -1,8 +1,9 @@
-from flask import Flask,make_response
+from flask import Flask,make_response,render_template,request
 from flask_restful import Api,reqparse,abort,Resource,fields, marshal
 import json
 from nltk import ngrams, re, pprint
 from ngram import NGram
+from subprocess import call
 
 app = Flask(__name__)
 api = Api(app)
@@ -25,6 +26,7 @@ def xml(data, code, headers):
     return resp'''
 
 class Text(Resource):
+
     def get(self,person_id):
         n=2
         occurs=[]
@@ -39,7 +41,14 @@ class Text(Resource):
         main_fields={'occurs':fields.String,"word":fields.String}
         datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))])}
         x=marshal(datas,main_fields)
+        #json.dumps(marshal(datas,main_fields))
         return x
+    @app.route("/api")
+    def api():
+
+        return render_template('results.html',response_data="asd")
+
+
 
 api.add_resource(Text, '/api/<person_id>')
 if __name__=="__main__":
