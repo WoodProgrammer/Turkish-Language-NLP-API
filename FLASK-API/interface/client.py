@@ -12,7 +12,8 @@ def send():
         word=request.form['word']
         parser.add_argument('word', action='append')
         args = parser.parse_args()
-        return str(args)
+
+        return str(unicode(args['word'][0]))
 
     return render_template("enter_data.html")
 

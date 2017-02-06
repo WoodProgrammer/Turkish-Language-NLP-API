@@ -1,4 +1,6 @@
 from flask import Flask,render_template,request
+from flask_restful import reqparse
+
 import pickle
 import json
 from pprint import pprint
@@ -11,6 +13,22 @@ app=Flask(__name__)
 def index():
         x,y=datas()
         return render_template("show.html",data1=x,data2=y)
+
+
+@app.route('/send',methods=["GET","POST"])
+def send():
+    if request.method=="POST":
+        parser = reqparse.RequestParser()
+        word=request.form['word']
+        parser.add_argument('word', action='append')
+        args = parser.parse_args()
+        return str(args['word'][0])
+
+    return render_template("enter_data.html")
+
+
+
+
 
 def datas():
 
@@ -30,4 +48,4 @@ def datas():
 
 
 if __name__=="__main__":
-    app.run(port=4000)
+    app.run()
