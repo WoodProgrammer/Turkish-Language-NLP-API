@@ -1,51 +1,21 @@
-from flask import Flask,render_template,request
-from flask_restful import reqparse
-
+from flask import Flask,render_template,request,make_response
+from flask_restful import Api,reqparse,Api,abort,Resource,fields, marshal
 import pickle
-import json
-from pprint import pprint
-import pickle
-
-app=Flask(__name__)
-
-
-@app.route("/")
-def index():
-        x,y=datas()
-        return render_template("show.html",data1=x,data2=y)
-
 
 @app.route('/send',methods=["GET","POST"])
-def send():
+def send(self):
+
     if request.method=="POST":
         parser = reqparse.RequestParser()
         word=request.form['word']
         parser.add_argument('word', action='append')
         args = parser.parse_args()
-        return str(args['word'][0])
-
+        word_data=str(args['word'][0])
+        return word_data
+        
     return render_template("enter_data.html")
 
 
-
-
-
-def datas():
-
-    with open('datas.json') as data_file:
-        data = json.load(data_file)
-
-    pprint(data[0]["occurs"])
-    data_serialized_file=open("data.pickle","wb")
-
-    pickle.dump(data,data_serialized_file)
-    data_serialized_file.close()
-
-    x=pickle.load(open("data.pickle","rb"))
-
-    return x[0]["occurs"],x[0]["word"]
-
-
-
+api.add_resource(Text, '/api/<person_id>')
 if __name__=="__main__":
-    app.run()
+    app.run(port=6000)
