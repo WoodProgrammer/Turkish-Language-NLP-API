@@ -1,14 +1,22 @@
 # Turkish-Language-NLP-API
-TLNP is a Turkish Language formatting API for creating perfect documents.At now it is on the Beta release.
-[FLASK Micro Framework](http://flask.pocoo.org/) is running at the background and [flask-restful](http://flask-restful.readthedocs.io/en/0.3.5/) module too.
-For using our API your dev-env:
-$ pip install Flask
-$ pip install flask-restful
-$ sudo pip install -U nltk
-[nltk.org](http://www.nltk.org/) is a greatful document for NLTkit.
+TLNP is a Turkish Language formatting API for creating perfect documents.At now it is on the
+Raw potatoes release.
 
-For use the API.You only use the GET Request.It is based on REST architecture.
+For use this API:
+First:
+  For Linux and MacOs:
+    `python install pip`
+  And after:
+    `pip install virtualenv`
 
-For testing and using with GET request.`localhost:5000/api/[YOUR_KEYWORD]``
+  After installed these modules problemless.
+    `cd FLASK-API/
+     source api bin/activate`
+  For run the server:
+    `(api) $ python server.py`
+    And server is runnig:
+    `localhost:5000/api`
+    After client-test:
+    `python client.py`
 
-This API is a basic FLASK-REST model.We are waiting your support. 
+    `localhost:4000`
