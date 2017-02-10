@@ -6,28 +6,28 @@ For use this API:
 
 First:
 
-  For Linux and MacOs:
+For Linux and MacOs:
 
-    `python install pip`
+    `$ python install pip`
 
-  And after:
+And after:
 
-    `pip install virtualenv`
+    `$ pip install virtualenv`
 
-  After installed these modules problemless.
+After installed these modules problemless.
 
-    `cd FLASK-API/
-     source api bin/activate`
+    `$ cd FLASK-API/
+     $ source api bin/activate`
 
-  For run the server:
+For run the server:
 
     `(api) $ python server.py`
 
-    And server is runnig:
+And server is runnig:
     `localhost:5000/api`
 
     After client-test:
-    `python client.py`
+    `$ python client.py`
 
     `localhost:4000`
 
@@ -50,4 +50,4 @@ For to run the containers
 
 If you did not install Docker on your machine look the Docker-Docs:
 
-  [DOCKER-DOCUMENTATION]('https://docs.docker.com/')
+  [DOCKER-DOCUMENTATION](https://docs.docker.com/)
