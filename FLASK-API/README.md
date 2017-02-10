@@ -20,3 +20,5 @@ First:
     `python client.py`
 
     `localhost:4000`
+FOR USE THE ON DOCKER:
+	
