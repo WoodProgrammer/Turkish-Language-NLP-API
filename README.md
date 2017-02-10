@@ -30,3 +30,22 @@ First:
     `python client.py`
 
     `localhost:4000`
+
+
+    FOR USE THE ON DOCKER:
+           Change the directory
+
+           `$ cd FLASK-API/docker-flask-api`
+
+           For building container on your system:
+
+            `$ docker-compose build`
+
+           For to run the containers
+
+            `$ docker-compose up`
+
+            `localhost:5000` is default IP on your local address.
+    If you did not install Docker on your machine look the Docker-Docs:
+
+            ["DOCKER-DOCUMENTATION"]('https://docs.docker.com/')
