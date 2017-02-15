@@ -12,12 +12,20 @@ For Linux and MacOs:
 
 And after:
 
+  This is for creating own virtual workspace.
     `$ pip install virtualenv`
+
 
 After installed these modules problemless.
 
     `$ cd FLASK-API/
      $ source api bin/activate`
+You can activate the virtualenv but you need install packages again:
+     `$(api)  pip install -r requirements.txt`
+
+
+(FOR YOUR HOST .)
+     `$ pip install -r requirements.txt`
 
 For run the server:
 

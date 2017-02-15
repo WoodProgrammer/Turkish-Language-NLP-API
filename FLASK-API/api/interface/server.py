@@ -3,7 +3,6 @@ from flask_restful import Api,reqparse,abort,Resource,fields, marshal
 import json
 from nltk import ngrams, re, pprint
 from ngram import NGram
-from subprocess import call
 
 app = Flask(__name__)
 api = Api(app)

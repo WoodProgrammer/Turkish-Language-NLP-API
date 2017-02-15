@@ -1,0 +1,6 @@
+Flask
+flask-restful
+ngrams
+nltk
+ngram
+requests
