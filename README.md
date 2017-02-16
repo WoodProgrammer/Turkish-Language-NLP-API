@@ -6,9 +6,16 @@ For use this API:
 
 First:
 
-For Linux and MacOs:
+For Linux
 
-    `$ python install pip`
+    `$ sudo apt-get install python-pip python-dev build-essential `
+
+For OSX:
+
+    `$ sudo curl https://bootstrap.pypa.io/get-pip.py > get-pip.py `
+
+    `$ sudo python get-pip.py `
+
 
 And after:
 
@@ -16,11 +23,13 @@ And after:
     `$ pip install virtualenv`
 
 
-After installed these modules problemless.
+After installed these modules without any error.
 
     `$ cd FLASK-API/
      $ source api bin/activate`
+
 You can activate the virtualenv but you need install packages again:
+
      `$(api)  pip install -r requirements.txt`
 
 
@@ -32,6 +41,7 @@ For run the server:
     `(api) $ python server.py`
 
 And server is runnig:
+
     `localhost:5000/api`
 
     After client-test:
@@ -45,17 +55,17 @@ Change the directory
 
   `$ cd FLASK-API/docker-flask-api`
 
-For building container on your system:
+Build container on your system:
 
   `$ docker-compose build`
 
-For to run the containers
+Wake up the containers
 
   `$ docker-compose up`
 
   `localhost:5000` is default IP on your local address.
 
 
-If you did not install Docker on your machine look the Docker-Docs:
+If you did not install Docker to on your host machine look the Docker-Docs:
 
   [DOCKER-DOCUMENTATION](https://docs.docker.com/)
