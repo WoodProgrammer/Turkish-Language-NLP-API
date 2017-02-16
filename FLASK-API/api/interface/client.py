@@ -19,6 +19,21 @@ def send():
 
     return render_template("enter_data.html")
 
+@app.route('/tokenize',methods=["GET","POST"])
+def tokenize():
+    if request.method=="POST":
+        parser = reqparse.RequestParser()
+        word=request.form['word']
+        parser.add_argument('word', action='append')
+        args = parser.parse_args()
+        api_word=str(unicode(args['word'][0]))
+        api_data=requests.get('http://localhost:5000/api/{}'.format(api_word)).content
+
+        return render_template("enter_data.html",api_data=api_data)
+
+    return render_template("enter_data.html")
+
+
 
 '''
 import requests

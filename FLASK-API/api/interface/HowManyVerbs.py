@@ -2,8 +2,6 @@ from __future__ import print_function
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
-
-
 import nltk
 
 def Split_Sentence(sentence):
@@ -32,7 +30,7 @@ def HowMamyVerbinText2(text):
 def HowMamyVerbinText(text):
     f = open('database', 'a')
     hm=0
-    
+
     text = nltk.word_tokenize(text)
     print (text)
     for i in range(0,len(text)):
@@ -41,6 +39,8 @@ def HowMamyVerbinText(text):
                 hm+=1
         print (text[i]+" "+str(hm),file=f)
         hm=0
+
+
 text = """The Eurovision Song Contest has hit a major road bump, after 21 top level staff organising the event resigned.
 The Ukrainian Eurovision team say they were stripped of major responsibilities in December, when a new boss was appointed to the organising committee.
 According to their resignation letter, they were "completely blocked" from making decisions about the show.

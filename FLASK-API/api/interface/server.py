@@ -49,7 +49,15 @@ class Text(Resource):
 
 
 
+class Tokenize(Resource):
+    def get(self,paragraph):
+
+        
+
+
 api.add_resource(Text, '/api/<person_id>')
+api.add_resource(Tokenize, '/api/<paragraph>')
+
 if __name__=="__main__":
 
     try:
