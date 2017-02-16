@@ -3,7 +3,7 @@ from flask_restful import Api,reqparse,abort,Resource,fields, marshal
 import json
 from nltk import ngrams, re, pprint
 from ngram import NGram
-
+import sys
 app = Flask(__name__)
 api = Api(app)
 
@@ -51,4 +51,8 @@ class Text(Resource):
 
 api.add_resource(Text, '/api/<person_id>')
 if __name__=="__main__":
-    app.run(debug=True,threaded=True)
+
+    try:
+        app.run(debug=True,threaded=True,port=int(sys.argv[1]))
+    except Exception as e:
+        app.run(debug=True,threaded=True,port=5000)
