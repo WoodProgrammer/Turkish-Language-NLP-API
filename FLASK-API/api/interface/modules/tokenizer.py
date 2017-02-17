@@ -41,6 +41,23 @@ def HowMamyVerbinText(text):
         print (text[i]+str(hm),file=f)
         hm=0
 
+def FixedText(textt,database):
+    Value=[0.5]
+    #text=Split_Sentence(database)
+    fix=""
+    text = nltk.word_tokenize(database)
+    maxvalue=Value[0]
+    for i in range(0,len(text)):
 
+        if NGram.compare(textt, text[i],N=1) > 0.5:
+            b=NGram.compare(textt,text[i])+5
+
+            if b>maxvalue:
+                maxvalue=b
+                fix=text[i]
+    textt=fix
+    return  textt
+        
+        
 HowMamyVerbinText2("text to Tugay")
 HowMamyVerbinText("text to text")
