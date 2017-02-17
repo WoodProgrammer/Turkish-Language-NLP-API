@@ -29,9 +29,9 @@ def tokenize():
         api_word=str(unicode(args['paragraph'][0]))
         api_data=requests.get('http://localhost:5000/tokenize/{}'.format(api_word)).content
 
-        return render_template("enter_data.html",api_data=api_data)
+        return render_template("paragraph.html",api_data=api_data)
 
-    return render_template("enter_data.html")
+    return render_template("paragraph.html")
 
 
 
@@ -45,4 +45,4 @@ def get_data():
     return requests.get('localhost:5000/api/thiz').content
 '''
 if __name__=="__main__":
-    app.run(port=4000,debug=True,threaded=True)
+    app.run(port=4001,debug=True,threaded=True)

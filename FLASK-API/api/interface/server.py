@@ -1,9 +1,18 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+from sklearn.feature_extraction.text import CountVectorizer
+import pandas as pd
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+import nltk
 from flask import Flask,make_response,render_template,request
 from flask_restful import Api,reqparse,abort,Resource,fields, marshal
 import json
 from nltk import ngrams, re, pprint
 from ngram import NGram
-import sys
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -52,11 +61,11 @@ class Text(Resource):
 class Tokenize(Resource):
     def get(self,paragraph):
 
-        
-
+        tokenized_data = nltk.word_tokenize(paragraph)
+        return tokenized_data
 
 api.add_resource(Text, '/api/<person_id>')
-api.add_resource(Tokenize, '/api/<paragraph>')
+api.add_resource(Tokenize, '/tokenize/<paragraph>')
 
 if __name__=="__main__":
 
