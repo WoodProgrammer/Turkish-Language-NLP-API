@@ -49,4 +49,5 @@ for i in tokenized_data:
         r_server.rpush(i,datas[i].sum())
     except Exception as e:
         pass
+r_server.save
 #print word_count
