@@ -1,10 +1,15 @@
 from __future__ import print_function
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+
+
+database="""
+to Tugay text
+"""
 import sys
 import nltk
-
-
+from ngram import NGram
 def Split_Sentence(sentence):
     verb=sentence.split()
     array=[]
@@ -45,6 +50,7 @@ def FixedText(textt,database):
     Value=[0.5]
     #text=Split_Sentence(database)
     fix=""
+
     text = nltk.word_tokenize(database)
     maxvalue=Value[0]
     for i in range(0,len(text)):
@@ -57,7 +63,10 @@ def FixedText(textt,database):
                 fix=text[i]
     textt=fix
     return  textt
-        
-        
-HowMamyVerbinText2("text to Tugay")
-HowMamyVerbinText("text to text")
+
+text="text to Tugay"
+HowMamyVerbinText2(text)
+HowMamyVerbinText(text)
+
+x=FixedText("txt",database)
+print(x)
