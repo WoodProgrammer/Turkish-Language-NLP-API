@@ -53,7 +53,7 @@ And server is runnig:
 FOR USE THE ON DOCKER:
 Change the directory
 
-  `$ cd FLASK-API/docker-flask-api`
+  `$ cd composetest`
 
 Build container on your system:
 
@@ -63,8 +63,10 @@ Wake up the containers
 
   `$ docker-compose up`
 
+
   `localhost:5000` is default IP on your local address.
 
+Notice:  On this docker we only added redis test service.We will integrate the other main web services.
 
 If you did not install Docker to on your host machine look the Docker-Docs:
 
