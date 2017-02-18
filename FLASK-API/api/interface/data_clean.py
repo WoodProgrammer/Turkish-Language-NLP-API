@@ -9,9 +9,7 @@ from nltk import ngrams, re, pprint
 from ngram import NGram
 import pandas as pd
 import redis
-
-
-
+r_server=redis.Redis("localhost")
 
 def get(paragraph):
 
@@ -37,9 +35,18 @@ simple_train_dtm=vect.transform(tokenized_data)
 #print simple_train_dtm.to_array
 #datas=pd.DataFrame(simple_train_dtm.toarray(),columns=vect.get_feature_names)
 datas=pd.DataFrame(simple_train_dtm.toarray(),columns=vect.get_feature_names())
+'''cols=["word","count"]
+words=[]
+counts=[]
+word_count={
+'words' : words,
+'counts': counts
+}'''
+
 
 for i in tokenized_data:
     try:
-        print datas[i].sum()
+        r_server.rpush(i,datas[i].sum())
     except Exception as e:
         pass
+#print word_count
