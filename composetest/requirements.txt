@@ -1,0 +1,8 @@
+flask
+redis
+flask-restful
+ngrams
+nltk
+ngram
+requests
+scikit-learn

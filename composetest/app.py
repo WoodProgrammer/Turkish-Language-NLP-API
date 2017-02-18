@@ -4,7 +4,8 @@ import json
 from nltk import ngrams, re, pprint
 from ngram import NGram
 from subprocess import call
-
+from redis import Redis
+redis=Redis(host="redis",port=6379)
 app = Flask(__name__)
 api = Api(app)
 
@@ -34,7 +35,7 @@ class Text(Resource):
         sixgrams = ngrams(str_read.split(), n)
         for grams in sixgrams:
             #print str(grams)
-            x=NGram.compare('{}'.format(person_id.decode('latin-1')),str(grams))
+            x=NGram.compare('{}'.format(person_id),str(grams))
             occurs.append(x)
             grams_arr.append(str(grams))
 
@@ -44,14 +45,30 @@ class Text(Resource):
         #json.dumps(marshal(datas,main_fields))
         return x
 
-    @app.route("/api")
-    def api():
 
-        return render_template('results.html',response_data="asd")
+
+class Redis1(Resource):
+    def get(self,id_redis):
+        return str(redis.lindex(id_redis,0))
 
 
 api.add_resource(Text, '/api/<person_id>')
-
+api.add_resource(Redis1,'/redis/<id_redis>')
 
 if __name__=="__main__":
     app.run(debug=True,host='0.0.0.0',port=5000)
+
+'''from flask import Flask
+from redis import Redis
+
+app = Flask(__name__)
+redis = Redis(host='redis', port=6379)
+redis.rpush("hallo",12)
+@app.route('/')
+def hello():
+    count = redis.lindex('hallo',0)
+    return 'Hello World! I have been seen  times.{}\n'.format(count)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
+'''
