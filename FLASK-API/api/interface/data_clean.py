@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 import nltk
 from sklearn.feature_extraction.text import CountVectorizer
@@ -12,7 +8,7 @@ import json
 from nltk import ngrams, re, pprint
 from ngram import NGram
 import pandas as pd
-
+import redis
 
 
 
@@ -22,8 +18,7 @@ def get(paragraph):
     tokenized_data = nltk.word_tokenize(paragraph)
     return tokenized_data
 
-text = """
-The Eurovision Song Contest has hit a major road bump, after 21 top level staff organising the event resigned.
+text = """The Eurovision Song Contest has hit a major road bump, after 21 top level staff organising the event resigned.
 The Ukrainian Eurovision team say they were stripped of major responsibilities in December, when a new boss was appointed to the organising committee.
 According to their resignation letter, they were "completely blocked" from making decisions about the show.
 The EBU, which founded Eurovision, told Ukraine's public broadcaster to "stick to the timeline" despite the upheaval.
@@ -32,7 +27,7 @@ All the staff were appointed by the Ukraine Public Broadcaster (UA:PBC), which i
 In an open letter published by Strana, the team said: "Hereby we, the Eurovision team, for whom this contest has become not only part of our work but also part of our life, officially inform that we are resigning and stopping work on preparations for the organisation of the contest."
 """
 
-tokenized_data=get(text)
+tokenized_data=get(text.lower())
 
 vect=CountVectorizer()
 
@@ -42,4 +37,9 @@ simple_train_dtm=vect.transform(tokenized_data)
 #print simple_train_dtm.to_array
 #datas=pd.DataFrame(simple_train_dtm.toarray(),columns=vect.get_feature_names)
 datas=pd.DataFrame(simple_train_dtm.toarray(),columns=vect.get_feature_names())
-print datas["eurovision"].sum()
+
+for i in tokenized_data:
+    try:
+        print datas[i].sum()
+    except Exception as e:
+        pass
