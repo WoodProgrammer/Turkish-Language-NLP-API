@@ -62,9 +62,22 @@ class Text(Resource):
 
 class Tokenize(Resource):
     def get(self,paragraph):
-
+        freq=[]
+        words=[]
         tokenized_data = nltk.word_tokenize(paragraph)
-        return tokenized_data
+        for i in tokenized_data:
+            try:
+                freq_db=r_server.lindex(i,0)
+                words.append(i)
+                freq.append(freq_db)
+
+            except Exception as e:
+                pass
+        main_fields={"word":fields.String,"freq":fields.String}
+        datas={'word':words,'freq':freq}
+        x=marshal(datas,main_fields)
+
+        return x
 
 api.add_resource(Text, '/api/<person_id>')
 api.add_resource(Tokenize, '/tokenize/<paragraph>')
