@@ -13,6 +13,8 @@ import json
 from nltk import ngrams, re, pprint
 from ngram import NGram
 
+import redis
+r_server=redis.Redis("localhost")
 app = Flask(__name__)
 api = Api(app)
 
@@ -46,8 +48,8 @@ class Text(Resource):
             occurs.append(x)
             grams_arr.append(str(grams))
 
-        main_fields={'occurs':fields.String,"word":fields.String}
-        datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))])}
+        main_fields={'occurs':fields.String,"word":fields.String,"freq":fields.String}
+        datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(person_id,0)}
         x=marshal(datas,main_fields)
         #json.dumps(marshal(datas,main_fields))
         return x
