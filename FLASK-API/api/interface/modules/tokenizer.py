@@ -48,27 +48,9 @@ def HowMamyVerbinText(text):
 
 
 
+
+
 def FixedText(textt):
-    Value=[0.5]
-    text=r.keys()
-    #text=Split_Sentence(database)
-    fix=""
-    #text = nltk.word_tokenize(database)
-    maxvalue=Value[0]
-    for i in range(0,len(text)):
-
-        if NGram.compare(textt,text[i],N=1) > 0.5:
-            a=float(r.get(text[i]))/10
-            b=NGram.compare(textt,text[i])+float(a)
-
-            if b>maxvalue:
-                maxvalue=b
-                fix=text[i]
-    textt=fix
-    print (a)
-    return  textt
-
-def FixedTextt(textt):
     Value=[0.5]
 
     fix=""
@@ -95,5 +77,5 @@ r = redis.StrictRedis()
 textt="waz"
 
 
-a=FixedTextt(textt)
+a=FixedText(textt)
 print (a)
