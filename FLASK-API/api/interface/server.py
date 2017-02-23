@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
 import nltk
 from flask import Flask,make_response,render_template,request
 from flask_restful import Api,reqparse,abort,Resource,fields, marshal
@@ -19,9 +21,9 @@ app = Flask(__name__)
 api = Api(app)
 
 
-def abort_if_nothing(person_id):
-    if person_id not in datas:
-        abort(404, status="{}".format(person_id)+"not here!")
+def abort_if_nothing(param_word):
+    if param_word not in datas:
+        abort(404, status="{}".format(param_word)+"not here!")
 
 '''@api.representation('application/xml')
 def xml(data, code, headers):
@@ -31,7 +33,7 @@ def xml(data, code, headers):
 
 class Text(Resource):
 
-    def get(self,person_id):
+    def get(self,param_word):
         n=2
         occurs=[]
         grams_arr=[]
@@ -42,12 +44,12 @@ class Text(Resource):
         #sixgrams = ngrams(str_read.split(), n)
         for keys in words:
             #print str(grams)
-            x=NGram.compare('{}'.format(person_id.decode('latin-1')),str(keys))
+            x=NGram.compare('{}'.format(param_word.decode('latin-1')),str(keys))
             occurs.append(x)
             grams_arr.append(str(keys))
 
         main_fields={'occurs':fields.String,"word":fields.String,"freq":fields.String}
-        datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(person_id,0)}
+        datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(param_word,0)}
         x=marshal(datas,main_fields)
         #json.dumps(marshal(datas,main_fields))
         return x
@@ -77,7 +79,7 @@ class Tokenize(Resource):
 
         return x
 
-api.add_resource(Text, '/api/<person_id>')
+api.add_resource(Text, '/api/<param_word>')
 api.add_resource(Tokenize, '/tokenize/<paragraph>')
 
 if __name__=="__main__":

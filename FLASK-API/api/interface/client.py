@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+from sklearn.feature_extraction.text import CountVectorizer
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from flask import Flask,render_template,request
 import requests
 from flask_restful import reqparse
