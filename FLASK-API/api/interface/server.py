@@ -18,13 +18,7 @@ r_server=redis.Redis("localhost")
 app = Flask(__name__)
 api = Api(app)
 
-str_read='''
-Porto'nun tecrubeli kalecisi Iker Casillas'in Sporting macinin son dakikasinda yaptigi inanilmaz kurtaris
-geceye damgasini vurdu.Porto'nun Sporting Lizbon'i 2-1 yendigi Portekiz Ligi mucadelesinde Iker Casillas'in yaptigi kurtaris geceye damga vurdu.
-Son dakikasina 2-1 girilen karsilasmada Sporting Lizbon'un tum haklariyla yuklendigi bir pozisyonda yapilan kafa vurusunu muthis bir refleksle cikartan Casillas,
- taraftarinin adeta gol sevinci yasamasina sebep oldu. Sporting Lizbon this is
-eurovison
-'''
+
 def abort_if_nothing(person_id):
     if person_id not in datas:
         abort(404, status="{}".format(person_id)+"not here!")

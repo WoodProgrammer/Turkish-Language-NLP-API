@@ -45,4 +45,4 @@ def get_data():
     return requests.get('localhost:5000/api/thiz').content
 '''
 if __name__=="__main__":
-    app.run(port=4001,debug=True,threaded=True)
+    app.run(port=4000,debug=True,threaded=True)
