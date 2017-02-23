@@ -23,7 +23,7 @@ Porto'nun tecrubeli kalecisi Iker Casillas'in Sporting macinin son dakikasinda y
 geceye damgasini vurdu.Porto'nun Sporting Lizbon'i 2-1 yendigi Portekiz Ligi mucadelesinde Iker Casillas'in yaptigi kurtaris geceye damga vurdu.
 Son dakikasina 2-1 girilen karsilasmada Sporting Lizbon'un tum haklariyla yuklendigi bir pozisyonda yapilan kafa vurusunu muthis bir refleksle cikartan Casillas,
  taraftarinin adeta gol sevinci yasamasina sebep oldu. Sporting Lizbon this is
-
+eurovison
 '''
 def abort_if_nothing(person_id):
     if person_id not in datas:
@@ -41,12 +41,16 @@ class Text(Resource):
         n=2
         occurs=[]
         grams_arr=[]
-        sixgrams = ngrams(str_read.split(), n)
-        for grams in sixgrams:
+        words=[]
+        for key in r_server.scan_iter():
+            words.append(key)
+
+        #sixgrams = ngrams(str_read.split(), n)
+        for keys in words:
             #print str(grams)
-            x=NGram.compare('{}'.format(person_id.decode('latin-1')),str(grams))
+            x=NGram.compare('{}'.format(person_id.decode('latin-1')),str(keys))
             occurs.append(x)
-            grams_arr.append(str(grams))
+            grams_arr.append(str(keys))
 
         main_fields={'occurs':fields.String,"word":fields.String,"freq":fields.String}
         datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(person_id,0)}

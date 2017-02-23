@@ -43,9 +43,11 @@ def HowMamyVerbinText(text):
         r.set(text[i], hm)
         hm = 0
 
+
+
 def FixedText(textt):
     Value=[0.5]
-
+    a=0
     fix=""
     maxvalue=Value[0]
     for key in r.scan_iter():
@@ -67,6 +69,12 @@ def FixedText(textt):
 r = redis.StrictRedis()
 
 
-textt="waz"
-FixedText(textt)
+
+
+
+
+#textt="waz"
+#FixedText(textt)
 #print (a)
+
+FixedText(str_read)
