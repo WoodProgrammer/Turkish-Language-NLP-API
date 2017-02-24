@@ -4,3 +4,6 @@ ngrams
 nltk
 ngram
 requests
+numpy
+sklearn
+scipy
