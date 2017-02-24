@@ -21,7 +21,7 @@ def send():
         parser.add_argument('word', action='append')
         args = parser.parse_args()
         api_word=str(unicode(args['word'][0]))
-        api_data=requests.get('http://localhost:5000/api/{}'.format(api_word)).content
+        api_data=requests.get('http://localhost:5000/api/{}'.format(api_word.lower())).content
 
         return render_template("enter_data.html",api_data=api_data)
 
@@ -34,7 +34,7 @@ def tokenize():
         word=request.form['paragraph']
         parser.add_argument('paragraph', action='append')
         args = parser.parse_args()
-        api_word=str(unicode(args['paragraph'][0]))
+        api_word=str(unicode(args['paragraph'][0].lower()))
         api_data=requests.get('http://localhost:5000/tokenize/{}'.format(api_word)).content
 
         return render_template("paragraph.html",api_data=api_data)

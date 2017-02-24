@@ -1,22 +1,24 @@
-# Turkish-Language-NLP-API
+# ENGLISH DOCUMENTATION VALIDATOR FOR TURKISH AUTHORS
 TLNP is a Turkish Language formatting API for creating perfect documents.At now it is on the
 Raw potatoes release.
+![Result-Example](result_1.png)
 
 For use this API:
 
 First:
 
 For Linux
-
-    `$ sudo apt-get install python-pip python-dev build-essential `
-
+```sh
+  $ sudo apt-get install python-pip python-dev build-essential
+```
 For OSX:
 
-    `$ sudo curl https://bootstrap.pypa.io/get-pip.py > get-pip.py `
+```sh
 
-    `$ sudo python get-pip.py `
+$ sudo curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+$ sudo python get-pip.py
 
-
+```
 And after:
 
   This is for creating own virtual workspace.
@@ -53,8 +55,9 @@ And server is runnig:
 FOR USE THE ON DOCKER:
 Change the directory
 
-  `$ cd composetest`
-
+  ```sh
+    $ cd composetest
+  ```
 Build container on your system:
 
   `$ docker-compose build`
