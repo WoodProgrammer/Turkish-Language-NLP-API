@@ -8,7 +8,7 @@ For see the Success Ratio on one word.
 For see the tokenization and statistics about frequency about your words:
 ![Result-Example](result_3.png)
 
-NOTICE:On our road map we will add the succes of whole paragrapgh
+#NOTICE:On our road map we will add the succes score of whole paragrapgh
 
 For use this API:
 
