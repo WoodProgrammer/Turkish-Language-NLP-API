@@ -1,7 +1,14 @@
 # ENGLISH DOCUMENTATION VALIDATOR FOR TURKISH AUTHORS
 TLNP is a Turkish Language formatting API for creating perfect documents.At now it is on the
 Raw potatoes release.
-![Result-Example](result_1.png)
+
+For see the Success Ratio on one word.
+![Result-Example](result_2.png)
+
+For see the tokenization and statistics about frequency about your words:
+![Result-Example](result_3.png)
+
+NOTICE:On our road map we will add the succes of whole paragrapgh
 
 For use this API:
 
