@@ -68,28 +68,26 @@ class Text(Resource):
         return render_template('results.html',response_data="asd")
 
 
-
-class Tokenize(Resource):
+class Validators(Resource):
     def get(self,paragraph):
-        freq=[]
-        words=[]
-        tokenized_data = nltk.word_tokenize(paragraph)
-        for i in tokenized_data:
-            try:
-                freq_db=r_server.lindex(i,0)
-                words.append(i)
-                freq.append(freq_db)
+        word_true=[]
+        paragraph_arr=paragraph.split()
+        for i in paragraph_arr:
+            for db_word in r_server.scan_iter():
+                if i== db_word:
+                    word_true.append(i)
+                    break
+        #accuracy=paragraph[:]-word_true[:]
+        main_fields={'true_words':fields.String,"all_words":fields.String,"accuracy":fields.Integer}
+        diff=set(paragraph_arr)-set(word_true)
+        accuracy=100-len(diff)*10
+        datas={'true_words':word_true,"all_words":paragraph,"accuracy":accuracy}
+        x=marshal(datas,main_fields)
 
-            except Exception as e:
-                pass
-        main_fields={"word":fields.String,"freq":fields.String}
-        datas={'word':words,'freq':freq}
-        #x=marshal(datas,main_fields)
-
-        return jsonify(datas)
+        return x
 
 api.add_resource(Text, '/api/<param_word>')
-api.add_resource(Tokenize, '/tokenize/<paragraph>')
+api.add_resource(Validators, '/validators/<paragraph>')
 
 if __name__=="__main__":
 

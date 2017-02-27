@@ -41,35 +41,14 @@ def tokenize():
         parser.add_argument('paragraph', action='append')
         args = parser.parse_args()
         api_word=str(unicode(args['paragraph'][0].lower()))
-        api_data=requests.get('http://localhost:5000/tokenize/{}'.format(api_word)).content
-                #SEND GET REQUEST TO THE SERVER.
-        api_data2=json.loads(api_data)
-        word_template=[]
+        api_data=requests.get('http://localhost:5000/validators/{}'.format(api_word)).content
+            #SEND GET REQUEST TO THE SERVER.
 
-        for i in range(2) :
-            word_template.append(api_data2['word'][i])
-
-
-
-        return render_template("paragraph_data.html",api_data = word_template)
+        return render_template("paragraph_data.html",api_data = api_data)
 
     return render_template("paragraph.html")
 
 
-@app.route('/document-validator',methods=["GET","POST"])
-def validators():
-
-    if request.method=="POST":
-        parser = reqparse.RequestParser()
-        word=request.form['word']
-        parser.add_argument('word', action='append')
-        args = parser.parse_args()
-        api_word=str(unicode(args['word'][0]))
-        api_data=requests.get('http://localhost:5000/api/{}'.format(api_word.lower())).content
-
-        return render_template("enter_data.html",api_data=api_data)
-
-    return render_template("enter_data.html")
 
 
 '''
