@@ -44,7 +44,7 @@ def tokenize():
 
 
 @app.route('/document-validator',methods=["GET","POST"])
-def validiator():
+def validators():
 
     if request.method=="POST":
         parser = reqparse.RequestParser()
