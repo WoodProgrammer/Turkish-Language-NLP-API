@@ -14,12 +14,6 @@
 </body>
 <h1>Sıklık Oranı</h1>
 
-
-{% if "None" in api_data %}
-  <p style="color:red;">{{api_data}}</p>
-{% else %}
-  <h2 style="color:color;">{{api_data}}</h2>
-{%endif%}
-
-
-</html>
+{%for i in api_data.items()%}
+  <h1>{{i}}</h1>
+{%endfor%}

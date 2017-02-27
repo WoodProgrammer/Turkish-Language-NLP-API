@@ -8,6 +8,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 from flask import Flask,render_template,request
 import requests
+import json
 from flask_restful import reqparse
 parser = reqparse.RequestParser()
 app=Flask(__name__)
@@ -37,7 +38,7 @@ def tokenize():
         api_word=str(unicode(args['paragraph'][0].lower()))
         api_data=requests.get('http://localhost:5000/tokenize/{}'.format(api_word)).content
 
-        return render_template("paragraph.html",api_data=api_data)
+        return render_template("paragraph.html",api_data=json.loads(api_data))
 
     return render_template("paragraph.html")
 

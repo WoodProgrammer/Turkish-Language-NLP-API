@@ -9,7 +9,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 import nltk
-from flask import Flask,make_response,render_template,request
+from flask import Flask,make_response,render_template,request,jsonify
 from flask_restful import Api,reqparse,abort,Resource,fields, marshal
 import json
 from nltk import ngrams, re, pprint
@@ -84,33 +84,12 @@ class Tokenize(Resource):
                 pass
         main_fields={"word":fields.String,"freq":fields.String}
         datas={'word':words,'freq':freq}
-        x=marshal(datas,main_fields)
+        #x=marshal(datas,main_fields)
 
-        return x
-class Validator(Resource):
-    def get(self,paragraph):
-        freq=[]
-        words=[]
-        tokenized_data = nltk.word_tokenize(paragraph)
-        for i in tokenized_data:
-            try:
-                freq_db=r_server.lindex(i,0)
-                words.append(i)
-                freq.append(freq_db)
-
-            except Exception as e:
-                pass
-        main_fields={"word":fields.String,"freq":fields.String}
-        datas={'word':words,'freq':freq}
-        x=marshal(datas,main_fields)
-
-        return x
-
-
+        return jsonify(datas)
 
 api.add_resource(Text, '/api/<param_word>')
 api.add_resource(Tokenize, '/tokenize/<paragraph>')
-api.add_resource(Validator, '/document/<paragraph>')
 
 if __name__=="__main__":
 
