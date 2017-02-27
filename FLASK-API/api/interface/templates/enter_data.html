@@ -15,8 +15,9 @@
 </body>
 <h1>Başarım ve Öneri:</h1>
 
-<p id="demo"></p>
-
-   <p style="color:green">{{api_data}}</p>
-
+{% if "true" in api_data %}
+  <h1 style="color:green;">{{api_data}}</h2>
+{% else %}
+  <h2 style="color:red;">{{api_data}}</h2>
+{%endif%}
 </html>

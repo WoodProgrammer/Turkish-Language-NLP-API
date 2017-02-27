@@ -58,10 +58,10 @@ class Text(Resource):
         datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(param_word,0),'status':status}
         x=marshal(datas,main_fields)
         #json.dumps(marshal(datas,main_fields))
-        if datas["status"]==True:
-            return datas["word"]
-        else:
-            return x
+        #if datas["status"]==True:
+        #    return datas["word"]
+        #else:
+        return  x
     @app.route("/api")
     def api():
 
