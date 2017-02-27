@@ -34,6 +34,7 @@ def xml(data, code, headers):
 class Text(Resource):
 
     def get(self,param_word):
+        status=False
         n=2
         occurs=[]
         grams_arr=[]
@@ -48,8 +49,13 @@ class Text(Resource):
             occurs.append(x)
             grams_arr.append(str(keys))
 
-        main_fields={'occurs':fields.String,"word":fields.String,"freq":fields.String}
-        datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(param_word,0)}
+        for key in r_server.scan_iter():
+            if key==param_word:
+                status=True
+                break
+
+        main_fields={'occurs':fields.String,"word":fields.String,"freq":fields.String,"status":fields.Boolean}
+        datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(param_word,0),'status':status}
         x=marshal(datas,main_fields)
         #json.dumps(marshal(datas,main_fields))
         return x
@@ -78,9 +84,30 @@ class Tokenize(Resource):
         x=marshal(datas,main_fields)
 
         return x
+class Validator(Resource):
+    def get(self,paragraph):
+        freq=[]
+        words=[]
+        tokenized_data = nltk.word_tokenize(paragraph)
+        for i in tokenized_data:
+            try:
+                freq_db=r_server.lindex(i,0)
+                words.append(i)
+                freq.append(freq_db)
+
+            except Exception as e:
+                pass
+        main_fields={"word":fields.String,"freq":fields.String}
+        datas={'word':words,'freq':freq}
+        x=marshal(datas,main_fields)
+
+        return x
+
+
 
 api.add_resource(Text, '/api/<param_word>')
 api.add_resource(Tokenize, '/tokenize/<paragraph>')
+api.add_resource(Validator, '/document/<paragraph>')
 
 if __name__=="__main__":
 

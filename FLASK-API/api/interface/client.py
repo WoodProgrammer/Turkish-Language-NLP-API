@@ -43,6 +43,22 @@ def tokenize():
 
 
 
+@app.route('/document-validator',methods=["GET","POST"])
+def validiator():
+
+    if request.method=="POST":
+        parser = reqparse.RequestParser()
+        word=request.form['word']
+        parser.add_argument('word', action='append')
+        args = parser.parse_args()
+        api_word=str(unicode(args['word'][0]))
+        api_data=requests.get('http://localhost:5000/api/{}'.format(api_word.lower())).content
+
+        return render_template("enter_data.html",api_data=api_data)
+
+    return render_template("enter_data.html")
+
+
 '''
 import requests
 from flask import Flask

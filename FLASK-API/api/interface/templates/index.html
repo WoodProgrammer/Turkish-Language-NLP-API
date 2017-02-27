@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Create Object from JSON String</h2>
+
+<p id="demo"></p>
+<p id="demo2" style="color:red;"></p>
+<script>
+var text = '{"employees":[' +
+'{"firstName":"John","lastName":"Doe","status":1},' +
+'{"firstName":"Anna","lastName":"Smith","status":1},' +
+'{"firstName":"Peter","lastName":"Jones","status":0 }]}';
+
+obj = JSON.parse(text);
+if (status==0) {
+  document.getElementById("demo").innerHTML =
+  obj.employees[1].firstName + " " + obj.employees[1].lastName;
+}
+else{
+  document.getElementById("demo2").innerHTML =
+  obj.employees[1].firstName + " " + obj.employees[1].lastName;
+}
+
+</script>
+
+</body>
+</html>
