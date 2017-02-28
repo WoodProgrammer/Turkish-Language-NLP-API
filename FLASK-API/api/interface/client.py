@@ -33,7 +33,7 @@ def send():
 
     return render_template("enter_data.html")
 
-@app.route('/tokenize',methods=["GET","POST"])
+@app.route('/validators',methods=["GET","POST"])
 def tokenize():
     if request.method=="POST":
         parser = reqparse.RequestParser()
