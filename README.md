@@ -2,11 +2,17 @@
 TLNP is a Turkish Language formatting API for creating perfect documents.At now it is on the
 Raw potatoes release.
 
-For see the Success Ratio on one word.
-![Result-Example](result_2.png)
+Validate the accuracy of word:
+![Result-Example]('word1.png')
 
-For see the tokenization and statistics about frequency about your words:
-![Result-Example](result_3.png)
+And Result
+![Result-Example]('word_true.png')
+
+Validate the paragrapgh:
+![Result-Example]('paragrapgh.png')
+
+And Result
+![Result-Example]('paragrapgh1.png')
 
 #NOTICE:On our road map we will add the succes score of whole paragrapgh
 

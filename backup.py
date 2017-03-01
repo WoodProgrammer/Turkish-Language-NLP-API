@@ -6,6 +6,7 @@ import io
 import redis
 from ngram import NGram
 import nltk
+import math as mat
 r = redis.Redis("localhost")
 
 def Split_Sentence(sentence):
@@ -75,13 +76,24 @@ def FixedText(textt):
         else:
             word_count_index.append(r.get(key))
 
-    return word_count_index,word.values()
+    return word_count_index,word.values(),word.keys()
 
 
 import matplotlib.pyplot as plt
-textt="this"
-x,y=FixedText(textt)
-plt.scatter(x,y,c='red',s=50)
+degress={}
+textt="thiz"
+counts,accuracy,keys=FixedText(textt)
+counts2,accuracy2,keys2=FixedText("hit")
+
+for i in range(len(counts)):
+    x=mat.tan(float(counts[i])/float(accuracy[i]))
+    degress['aci{}'.format(i)]=(1.61977519054-x)
+    degress['kelime{}'.format(i)]=counts[i]
+##UTKUTOSPONTUS YONTEMI.<3
+print(keys)
+print (degress)
+plt.plot(counts,accuracy)
+plt.plot(counts2,accuracy2)
 
 plt.show()
 #FixedText(str_read)
