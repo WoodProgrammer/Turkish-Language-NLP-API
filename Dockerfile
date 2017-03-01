@@ -5,5 +5,7 @@ RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
 WORKDIR /code
 RUN pip install -r requirements.txt
-CMD ["python", "data_clean.py"]
-CMD ["python", "app.py"]
+
+CMD ["python", "FLASK-API/api/interface/data_clean.py"]
+CMD ["python", "FLASK-API/api/interface/server.py"]
+CMD ["python", "FLASK-API/api/interface/client.py"]

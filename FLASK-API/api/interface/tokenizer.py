@@ -51,10 +51,12 @@ def FixedText(textt):
     fix=""
     maxvalue=Value[0]
     for key in r.scan_iter():
+        x=NGram.compare(textt,key,N=1)
+        if  x>= 0.5:
 
-        if NGram.compare(textt,key,N=1) >= 0.5:
-            a=float(r.get(key))/10
-            b=NGram.compare(textt,key)+float(a)
+            a=float(r.lindex(key,0))/100
+
+            b=100*x+float(a)
 
             if b>maxvalue:
                 maxvalue=b
@@ -62,19 +64,13 @@ def FixedText(textt):
         else:
             continue
     textt=fix
-    print (a)
+
     return  textt
 
 
-r = redis.StrictRedis()
+r = redis.Redis("localhost")
 
+textt="thiz"
+print (FixedText(textt))
 
-
-
-
-
-#textt="waz"
-#FixedText(textt)
-#print (a)
-
-FixedText(str_read)
+#FixedText(str_read)

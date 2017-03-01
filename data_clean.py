@@ -10,7 +10,8 @@ import pandas as pd
 import redis
 
 r_server=redis.Redis(host="redis",port=6379)
-
+r_server.rpush("habale",0)
+r_server.save
 def get(paragraph):
 
     tokenized_data = nltk.word_tokenize(paragraph)

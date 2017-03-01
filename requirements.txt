@@ -1,10 +1,6 @@
-Flask
-flask-restful
-ngrams
-nltk
-ngram
-requests
 numpy
 sklearn
+pandas
 scipy
-redis
+nltk
+ngrams

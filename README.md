@@ -38,7 +38,7 @@ And after:
 After installed these modules without any error.
 
     `$ cd FLASK-API/
-     $ source api bin/activate`
+     $ source api/bin/activate`
 
 You can activate the virtualenv but you need install packages again:
 

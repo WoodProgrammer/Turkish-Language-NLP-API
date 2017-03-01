@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 from __future__ import unicode_literals
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
