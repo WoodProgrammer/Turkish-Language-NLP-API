@@ -49,18 +49,26 @@ class Text(Resource):
             grams_arr.append(str(keys))
 
         for key in r_server.scan_iter():
-
             if key == param_word:
                 status=True
 
-        main_fields={'occurs':fields.String,"word":fields.String,"freq":fields.String,"status":fields.Boolean}
-        datas={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.lindex(param_word,0),'status':status}
-        x=marshal(datas,main_fields)
+
+        if status is True:
+            main_fields_true={"word":fields.String,"status":fields.Boolean}
+            datas_true={'word':"{}".format(param_word),'status':status}
+            x_true=marshal(datas_true,main_fields_true)
+            return x_true
+        else:
+            main_fields_false={'occurs':fields.String,"word":fields.String,"freq":fields.String,"status":fields.Boolean}
+            datas_false={'occurs':"{}".format(max(occurs)*1000),'word':"{}".format(grams_arr[occurs.index(max(occurs))]),'freq':r_server.get(param_word),'status':status}
+            x_false=marshal(datas_false,main_fields_false)
+            return x_false
+
         #json.dumps(marshal(datas,main_fields))
         #if datas["status"]==True:
         #    return datas["word"]
         #else:
-        return  x
+    
     @app.route("/api")
     def api():
 

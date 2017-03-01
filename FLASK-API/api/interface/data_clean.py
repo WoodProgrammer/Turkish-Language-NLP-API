@@ -43,7 +43,7 @@ def redis_writer(t_name):
     datas2=pd.DataFrame(simple_train_dtm2.toarray(),columns=vect2.get_feature_names())
     for i in tokenized_data2:
         try:
-            r_server.rpush(i,datas2[i].sum())
+            r_server.set(i,datas2[i].sum())
         except Exception as e:
             pass
     r_server.save
