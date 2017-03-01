@@ -8,31 +8,31 @@ Validate the accuracy of word:
 ```
 
 ```sh
-```
-json
+
+
   $ {
     "freq": null,
     "occurs": "250.0",
     "status": false,
     "word": "was"
 }
-```
+
 ```
 Validate the accuracy of word:
+
 ```sh
   $ curl localhost:5000/validators/eurovision%20ukraine
 ```
 
 ```sh
-```
-json
+
   $ {
     "accuracy": 100,
     "all_words": "eurovision ukraine",
     "true_words": "[u'eurovision', u'ukraine']"
     }
 ```
-```
+
 
 And Result
 
