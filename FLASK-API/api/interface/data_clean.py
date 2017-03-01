@@ -30,7 +30,7 @@ The EBU, which founded Eurovision, told Ukraine's public broadcaster to "stick t
 It insisted the event would go ahead as planned in Kiev this May. Among the team members who resigned were two executive producers of this year's show.
 All the staff were appointed by the Ukraine Public Broadcaster (UA:PBC), which is organising the contest after Ukrainian singer Jamala won last year's event with the song 1944.
 In an open letter published by Strana, the team said: "Hereby we, the Eurovision team, for whom this contest has become not only part of our work but also part of our life, officially inform that we are resigning and stopping work on preparations for the organisation of the contest."
-
+this this this this
 """
 def redis_writer(t_name):
     tokenized_data2=get(t_name.lower())

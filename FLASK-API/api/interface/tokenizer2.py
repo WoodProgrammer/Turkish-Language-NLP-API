@@ -48,7 +48,7 @@ def HowMamyVerbinText(text):
 def FixedText(textt):
 
     word={}
-
+    word_count_index=[]
     Value=[0.5]
     a=0
     fix=""
@@ -62,18 +62,23 @@ def FixedText(textt):
             if b>maxvalue:
                 maxvalue=b
                 fix=key
-            
+
             word[fix]=b
+
 
         else:
             continue
-
-    return  word
+    for key in  word.keys():
+        if key is None:
+            pass
+        else:
+            word_count_index.append(r.lindex(key,0))
+    return word_count_index
 
 
 r = redis.Redis("localhost")
 
-textt="thiz"
+textt="was"
 print (FixedText(textt))
 
 #FixedText(str_read)
