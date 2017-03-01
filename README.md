@@ -3,16 +3,42 @@ TLNP is a Turkish Language formatting API for creating perfect documents.At now 
 Raw potatoes release.
 
 Validate the accuracy of word:
-![Result-Example]('word1.png')
+```sh
+  $ curl localhost:5000/waz
+```
+
+```sh
+```
+json
+  $ {
+    "freq": null,
+    "occurs": "250.0",
+    "status": false,
+    "word": "was"
+}
+```
+```
+Validate the accuracy of word:
+```sh
+  $ curl localhost:5000/validators/eurovision%20ukraine
+```
+
+```sh
+```
+json
+  $ {
+    "accuracy": 100,
+    "all_words": "eurovision ukraine",
+    "true_words": "[u'eurovision', u'ukraine']"
+    }
+```
+```
 
 And Result
-![Result-Example]('word_true.png')
 
 Validate the paragrapgh:
-![Result-Example]('paragrapgh.png')
 
 And Result
-![Result-Example]('paragrapgh1.png')
 
 #NOTICE:On our road map we will add the succes score of whole paragrapgh
 
