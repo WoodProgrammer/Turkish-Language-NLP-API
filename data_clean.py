@@ -9,9 +9,10 @@ from ngram import NGram
 import pandas as pd
 import redis
 
-r_server=redis.Redis(host="redis",port=6379)
-r_server.rpush("habale",0)
-r_server.save
+from nltk.book import text1
+r_server=redis.Redis(host="localhost")
+#r_server.rpush("habale",0)
+#r_server.save
 def get(paragraph):
 
     tokenized_data = nltk.word_tokenize(paragraph)
@@ -26,29 +27,23 @@ All the staff were appointed by the Ukraine Public Broadcaster (UA:PBC), which i
 In an open letter published by Strana, the team said: "Hereby we, the Eurovision team, for whom this contest has become not only part of our work but also part of our life, officially inform that we are resigning and stopping work on preparations for the organisation of the contest."
 """
 
-tokenized_data=get(text.lower())
-
 vect=CountVectorizer()
+vect.fit(text1)
+print vect.get_feature_names()
 
-vect.fit(tokenized_data)
-#print vect.get_feature_names()
-simple_train_dtm=vect.transform(tokenized_data)
+simple_train_dtm=vect.transform(text1)
+for i in text1:
+
+
+    print text1.count(i)
+    r_server.set(i,text1.count(i))
 #print simple_train_dtm.to_array
 #datas=pd.DataFrame(simple_train_dtm.toarray(),columns=vect.get_feature_names)
-datas=pd.DataFrame(simple_train_dtm.toarray(),columns=vect.get_feature_names())
-'''cols=["word","count"]
-words=[]
-counts=[]
-word_count={
-'words' : words,
-'counts': counts
-}'''
+#datas=pd.DataFrame(simple_train_dtm.toarray(),columns=vect.get_feature_names())
 
 
-for i in tokenized_data:
-    try:
-        r_server.rpush(i,datas[i].sum())
-    except Exception as e:
-        pass
-r_server.save
+
+
+#print r_server.get("eurovision")
+#r_server.save
 #print word_count

@@ -68,7 +68,7 @@ class Text(Resource):
         #if datas["status"]==True:
         #    return datas["word"]
         #else:
-    
+
     @app.route("/api")
     def api():
 
@@ -101,4 +101,4 @@ if __name__=="__main__":
     try:
         app.run(debug=True,threaded=True,port=int(sys.argv[1]))
     except Exception as e:
-        app.run(debug=True,threaded=True,port=5000)
+        app.run(debug=True,threaded=True,port=6000)

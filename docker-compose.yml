@@ -3,8 +3,10 @@ services:
   web:
     build: .
     ports:
-     - "5000:5000"
+      - "5000:5000"
     volumes:
-     - .:/code
+      - .:/code
+    links:
+      - redis
   redis:
     image: "redis:alpine"

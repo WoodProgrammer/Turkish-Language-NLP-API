@@ -1,0 +1,28 @@
+The lexica for the three languages have
+been taken from public sources. For English
+it has been obtained from the website
+www.audiencedialogue.org/susteng.html; for Hindi
+and Bengali, the word lists as well as the unigram
+frequencies have been estimated from the monolingual
+corpora published by Central Institute of
+Indian Languages. We chose to work with the most
+frequent 10000 words, as the medium size of the
+two Indian language corpora (around 3M words
+each) does not provide sufficient data for estimation
+of the unigram frequencies of a large number
+of words (say 50000). Therefore, all the results
+described in this work pertain to the SpellNets
+corresponding to the most frequent 10000 words.
+However, we believe that the trends observed do not
+reverse as we increase the size of the networks.
+In this paper, we focus on the networks at three
+different thresholds, that is for θ = 1, 3, 5, and study
+the properties of Gθ for the three languages. We
+do not go for higher thresholds as the networks become
+completely connected at θ = 5. Table 1 reports
+the values of different topological metrics of
+the SpellNets for the three languages at three thresholds.
+In the following two sections, we describe in
+detail some of the topological properties of SpellNet,
+their implications to spell-checking, and observations
+in the three languages.

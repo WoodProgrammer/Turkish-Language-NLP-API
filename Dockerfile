@@ -7,5 +7,5 @@ WORKDIR /code
 RUN pip install -r requirements.txt
 
 CMD ["python", "FLASK-API/api/interface/data_clean.py"]
-CMD ["python", "FLASK-API/api/interface/server.py"]
+CMD ["python", "FLASK-API/api/interface/server.py 3000"]
 CMD ["python", "FLASK-API/api/interface/client.py"]

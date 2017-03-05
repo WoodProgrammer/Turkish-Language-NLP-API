@@ -4,3 +4,9 @@ pandas
 scipy
 nltk
 ngrams
+flask
+requests
+flask-restful
+nltk
+ngram
+redis

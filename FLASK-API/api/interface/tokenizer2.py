@@ -75,13 +75,12 @@ def FixedText(textt):
         else:
             word_count_index.append(r.get(key))
 
-    return word_count_index,word.values()
+    return word_count_index,word.values(),word.keys()
 
 
 import matplotlib.pyplot as plt
-textt="this"
-x,y=FixedText(textt)
-plt.scatter(x,y,c='red',s=50)
-
-plt.show()
+textt="ocean"
+x,y,z=FixedText(textt)
+print (x,y,z)
+#plt.show()
 #FixedText(str_read)
